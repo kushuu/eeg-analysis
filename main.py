@@ -273,7 +273,7 @@ def main():
 
     # download data
     print("\nDownloading PhysioNet EEG Motor Imagery Dataset...")
-    files = download_physionet_data(subject=1, runs=list(range(15)))
+    files = download_physionet_data(subject=1, runs=list(range(15)), save_dir=DATA_DIR)
 
     # load epochs
     print("\nLoading and epoching data...")
@@ -462,8 +462,8 @@ def create_visualizations(raw, processed, csp, labels, extractor, results):
     ax9.set_title('Top 10 Feature Importances (RF)')
     ax9.grid(True, alpha=0.3, axis='x')
 
-    plt.savefig('results/full_analysis.png', dpi=150, bbox_inches='tight')
-    print("Saved: results/full_analysis.png")
+    plt.savefig(f'{RESULTS_DIR}/full_analysis.png', dpi=150, bbox_inches='tight')
+    print(f"Saved: {RESULTS_DIR}/full_analysis.png")
     plt.close()
 
 
@@ -494,9 +494,9 @@ def create_confusion_matrices(y_test, results):
         plt.colorbar(im, ax=axes[idx])
 
     plt.tight_layout()
-    plt.savefig('results/confusion_matrices.png',
+    plt.savefig(f'{RESULTS_DIR}/confusion_matrices.png',
                 dpi=150, bbox_inches='tight')
-    print("Saved: results/confusion_matrices.png")
+    print(f"Saved: {RESULTS_DIR}/confusion_matrices.png")
     plt.close()
 
 
